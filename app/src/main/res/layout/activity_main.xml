@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:id="@+id/Liner8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right">
+
+        <TextView
+            android:id="@+id/dl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/dl_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/dc_1" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Liner9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Liner8"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/DeviceName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="当前设备"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Liner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Liner9"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/retreat"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_weight="1"
+            android:background="@drawable/linerxml"
+            android:gravity="center"
+            android:text="后退"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/stop"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/yj_1"
+            android:gravity="center"
+            android:text="停止"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/advance"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/linerxml"
+            android:gravity="center"
+            android:text="前进"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relat_1"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Liner1"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="50dp"
+            android:gravity="center"
+            android:text="A臂"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="50dp"
+            android:gravity="center"
+            android:text="B臂"
+            android:textSize="16dp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ALiner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relat_1">
+
+        <RelativeLayout
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/a_yj"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/ANewss"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:src="@drawable/shangs" />
+
+            <ImageView
+                android:id="@+id/ANewStop"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/ANewss"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/stop" />
+
+            <ImageView
+                android:id="@+id/ANewxj"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/ANewStop"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/xiaj" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relat_1"
+        android:layout_alignParentRight="true">
+
+        <RelativeLayout
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/a_yj"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/BNewss"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:src="@drawable/shangs" />
+
+            <ImageView
+                android:id="@+id/BNewStop"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/BNewss"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/stop" />
+
+            <ImageView
+                android:id="@+id/BNewxj"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/BNewStop"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/xiaj" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    //Old
+
+    <LinearLayout
+
+        android:id="@+id/Liner2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ALiner"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/linerxml">
+
+        <Button
+            android:id="@+id/Arm_descent"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@drawable/but_white"
+            android:gravity="center"
+            android:text="机械臂下降"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/Arm_suspension"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/but_white"
+            android:gravity="center"
+            android:text="机械臂暂停"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/Lifting_of_manipulator"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/but_white"
+            android:gravity="center"
+            android:text="机械臂上升"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Liner3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Liner2"
+        android:layout_marginTop="10dp"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/A_arm_down"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@drawable/login_bt_red"
+            android:gravity="center"
+            android:text="A臂下降"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/A_arm_suspension"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/login_bt_red"
+            android:gravity="center"
+            android:text="A臂暂停"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/A_rising_arm"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/login_bt_red"
+            android:gravity="center"
+            android:text="A臂上升"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Liner4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Liner3"
+        android:layout_marginTop="10dp"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/B_arm_down"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@drawable/login_bt_red"
+            android:gravity="center"
+            android:text="B臂下降"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/B_arm_suspension"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/login_bt_red"
+            android:gravity="center"
+            android:text="B臂暂停"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/B_arm_rise"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/login_bt_red"
+            android:gravity="center"
+            android:text="B臂上升"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Liner5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Liner2"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/linerxml">
+
+        <Button
+            android:id="@+id/Within_the_bar_to"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@drawable/but_white"
+            android:gravity="center"
+            android:text="横杆向内"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/Bar_to_stop"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/but_white"
+            android:gravity="center"
+            android:text="横杆停止"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/Rail_outward"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/but_white"
+            android:gravity="center"
+            android:text="横杆向外"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Liner6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Liner5"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/jt">
+
+
+        <Button
+            android:id="@+id/scram"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@drawable/but_white"
+            android:gravity="center"
+            android:text="急停"
+            android:textColor="#ff0000"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Liner7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Liner6"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/But_control"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@drawable/speedbut"
+            android:gravity="center"
+            android:text="速度控制"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+
+</RelativeLayout>

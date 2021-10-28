@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:id="@+id/Liner_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="left|center"
+            android:text="机器人进行速度"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/upstream_speed"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Liner_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Liner_1"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="left|center"
+            android:text="机械臂上升下降速度"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/rate_of_descent"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="center" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/Liner_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Liner_2"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="left|center"
+            android:text="A臂上升下降速度"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/ascending"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Liner_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Liner_3"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="left|center"
+            android:text="B臂上升下降速度"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/B_rate_of_descent"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="center" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/Liner_5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Liner_4"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="left|center"
+            android:text="横杆内外伸展速度"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/rail"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Liner_6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Liner_5"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/UpdateData"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="确定" />
+    </LinearLayout>
+
+
+</RelativeLayout>
