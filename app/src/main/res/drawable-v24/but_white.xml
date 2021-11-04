@@ -22,6 +22,7 @@
             //047f2d 618df#
             <!--设置渐变-->5fe7ff 618dff #00e3ae
             <gradient android:angle="90" android:endColor="#fbfcff" android:startColor="#fbfcff" />
+            <corners android:radius="10dp" />
             <!--angle控制渐变的方向-->
             <!-- 设置按钮的四个角为弧形 -->
             <!-- android:radius 弧形的半径 -->

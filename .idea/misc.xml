@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Manipulator_control/app/src/main/res/drawable-v24/but_white.xml" value="0.22083333333333333" />
         <entry key="..\:/Manipulator_control/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.22083333333333333" />
         <entry key="..\:/Manipulator_control/app/src/main/res/drawable/a_yj.xml" value="0.22083333333333333" />
         <entry key="..\:/Manipulator_control/app/src/main/res/drawable/ic_launcher_background.xml" value="0.22083333333333333" />
@@ -10,7 +11,7 @@
         <entry key="..\:/Manipulator_control/app/src/main/res/drawable/login_bt_red.xml" value="0.22083333333333333" />
         <entry key="..\:/Manipulator_control/app/src/main/res/drawable/yj_1.xml" value="0.22083333333333333" />
         <entry key="..\:/Manipulator_control/app/src/main/res/layout/activity_control.xml" value="0.2957427536231884" />
-        <entry key="..\:/Manipulator_control/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Manipulator_control/app/src/main/res/layout/activity_main.xml" value="0.33" />
       </map>
     </option>
   </component>

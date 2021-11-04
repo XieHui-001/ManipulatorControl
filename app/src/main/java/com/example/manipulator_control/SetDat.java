@@ -87,6 +87,24 @@ public class SetDat {
         Logs.e("数据：Bar_control", FH + "   " + transmitting_apparatus + "   " + target_device + "   " + Function + "   " + b + "   " + a + "   " + Values);
         return ReturnValue;
     }
+
+    public static byte[] turn_on(int value){
+        byte Function = (byte) 0xf3;
+        byte target_device = 0X05;
+        byte FH = (byte) 0xAA;
+        byte transmitting_apparatus = (byte) 0XAF;
+        short data = (short) value;
+        byte b = (byte) (data & 0xff);//低八位
+        byte a = (byte) ((data & 0xff00) >> 8);
+
+        int SumData = (int) FH + transmitting_apparatus + target_device + Function + b + a;
+        byte Values = (byte) SumData;
+        byte[] ReturnValue = {FH, transmitting_apparatus, target_device, Function, a, b, Values};
+        Logs.e("数据：turn_on", FH + "   " + transmitting_apparatus + "   " + target_device + "   " + Function + "   " + b + "   " + a + "   " + Values);
+        return ReturnValue;
+    }
+
+
 //    public static byte[] shoryo(short number) {
 //        int temp = number;
 //        byte[] b = new byte[2];

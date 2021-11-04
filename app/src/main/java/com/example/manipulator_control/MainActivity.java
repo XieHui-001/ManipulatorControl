@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     private Handler handler = new Handler();
     private Runnable runnable;
     public List<Values> valuesList = new ArrayList();
-
+    private boolean binit;
     public static MainActivity Instance = null;
 
     public MainActivity() {
@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         verifyStoragePermissions(MainActivity.this);
         CreaXml();
         CreatFile();
+        TestStrCut();
         Button control = (Button) findViewById(R.id.But_control);
         control.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -376,6 +377,30 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(MainActivity.this, "串口没有正常连接", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        TextView dl = (TextView) findViewById(R.id.dl);
+        ImageView openPower = (ImageView) findViewById(R.id.openPower);
+        openPower.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mSerial.isConnected()) {
+                    int innn = dl.getText().length();
+                    if (dl.getText() != null) {
+                        if (!binit) {
+                            binit = true;
+                            openPower.setImageResource(R.drawable.close);
+                            mSerial.write(SetDat.turn_on(0));
+                        } else {
+                            binit = false;
+                            openPower.setImageResource(R.drawable.open);
+                            mSerial.write(SetDat.turn_on(1));
+                        }
+                    }
+                } else {
+                    Toast.makeText(MainActivity.this, "串口没有正常连接", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -701,6 +726,15 @@ public class MainActivity extends AppCompatActivity {
             dirsFile.mkdirs();
         }
     }
-    // 读取
+
+    private void TestStrCut(){
+        String OUD = "OM_FDSF";
+        String ddd = OUD.toLowerCase();
+        String Index  ="uploads/ai_bird/20211102/fb259708-9b1c-4efe-b660-7cc5b186aec2.jpg,uploads/ai_bird/20211102/7698ee24-d347-48bc-a4f0-73bc1984b1c0.jpg,uploads/ai_bird/20211102/a6a95c2d-2a00-4c8c-8602-0eb0d56466a5.jpg";
+        String index1 = Index.substring(0,Index.indexOf(","));
+        String Index2 = Index.replace("uploads/ai_bird/20211102/fb259708-9b1c-4efe-b660-7cc5b186aec2.jpg"+",","");
+        String Index3 = Index2.substring(0,Index2.indexOf(","));
+        String sss ="";
+    }
 
 }
