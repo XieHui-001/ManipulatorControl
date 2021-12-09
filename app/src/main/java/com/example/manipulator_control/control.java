@@ -5,6 +5,7 @@ import static android.view.KeyEvent.KEYCODE_BACK;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Xml;
@@ -49,6 +50,8 @@ public class control extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 UpdateValue();
+                startActivity(new Intent(control.this, MainActivity.class));
+                finish();
             }
         });
     }

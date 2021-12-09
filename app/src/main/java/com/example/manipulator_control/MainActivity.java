@@ -4,21 +4,30 @@ import static android.view.KeyEvent.KEYCODE_BACK;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Color;
 import android.hardware.usb.UsbManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.util.Xml;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -42,6 +51,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import tw.com.prolific.driver.pl2303.PL2303Driver;
 
@@ -60,11 +70,15 @@ public class MainActivity extends AppCompatActivity {
     private boolean binit;
     public static MainActivity Instance = null;
 
+    private password_fg password_fg = new password_fg();
+
     public MainActivity() {
         MainActivity.Instance = this;
     }
 
-
+    private TextView Main_home;
+    private TextView Main_control;
+    private TextView Main_update;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,8 +86,36 @@ public class MainActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         verifyStoragePermissions(MainActivity.this);
         CreaXml();
+        CreaPassowrdXml();
         CreatFile();
-        TestStrCut();
+        Main_home = findViewById(R.id.Main_home);
+        Main_control = findViewById(R.id.Main_control);
+        Main_update = findViewById(R.id.Main_update);
+
+
+        Main_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,update.class));
+            }
+        });
+        Main_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Main_home.setTextColor(Color.parseColor("#4FACFE"));
+                Main_control.setTextColor(Color.BLACK);
+                SwithFragment(password_fg, MainActivity.this, R.id.My_rel, true);
+            }
+        });
+        Main_control.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Main_control.setTextColor(Color.parseColor("#4FACFE"));
+                Main_home.setTextColor(Color.BLACK);
+                SwithFragment(password_fg, MainActivity.this, R.id.My_rel, false);
+            }
+        });
+
         Button control = (Button) findViewById(R.id.But_control);
         control.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -364,16 +406,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (mSerial.isConnected()) {
-                    for (int i = 0; i < 3; i++) {
-                        if (i == 0) {
-                            mSerial.write(SetDat.SetData(0));
-                        } else if (i == 1) {
-                            mSerial.write(SetDat.master_control(0));
-                        } else if (i == 2) {
-                            mSerial.write(SetDat.Bar_control(0));
-                            break;
-                        }
-                    }
+                    mSerial.write(SetDat.StopAll(0));
                 } else {
                     Toast.makeText(MainActivity.this, "串口没有正常连接", Toast.LENGTH_SHORT).show();
                 }
@@ -385,8 +418,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (mSerial.isConnected()) {
-                    int innn = dl.getText().length();
-                    if (dl.getText() != null) {
+                    if (dl.getText() != null && !dl.getText().toString().isEmpty()) {
                         if (!binit) {
                             binit = true;
                             openPower.setImageResource(R.drawable.close);
@@ -416,6 +448,32 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(runnable, 1000);
 
 
+    }
+
+
+    Fragment cacheFragment;
+
+    //FragmentTransaction
+    public void SwithFragment(Fragment fragment, FragmentActivity fma, int idResources, boolean isture) {
+        FragmentManager fm = fma.getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        if (!isture) {
+            if (!fragment.isAdded()) {//还没添加 Fragment
+                if (cacheFragment != null) {
+                    transaction.hide(cacheFragment).add(idResources, fragment, fragment.getClass().getName()).commit();
+                } else {
+                    transaction.show(fragment).commit();
+                }
+                transaction.add(idResources, fragment, fragment.getClass().getName());
+            } else {//已经添加过了 Fragment
+                transaction.hide(fragment).show(cacheFragment).commit();
+            }
+        } else {
+            if (cacheFragment != null) {
+                transaction.hide(cacheFragment).commit();
+            }
+        }
+        cacheFragment = fragment;
     }
 
 
@@ -631,6 +689,77 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 
+    public String Password = null;
+
+    private void CreaPassowrdXml() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    File file = new File(Environment.getExternalStorageDirectory(),
+                            "LocalAppLogs/User_Password.xml");
+                    if (!file.exists()) {
+                        FileOutputStream fos = new FileOutputStream(file);
+                        XmlSerializer serializer = Xml.newSerializer();
+                        serializer.setOutput(fos, "UTF-8");
+                        Map<String, Object> json = new HashMap<>();
+                        json.put("Password", "admin");
+                        JSONObject jsonObject;
+                        jsonObject = new JSONObject(json);
+                        serializer.text(jsonObject.toString());
+                        serializer.endDocument();
+                        fos.close();
+                        Password = "admin";
+                    } else {
+                        GetPassowrdXml();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+
+    private void GetPassowrdXml() throws FileNotFoundException {
+        try {
+            File file = new File(Environment.getExternalStorageDirectory(),
+                    "LocalAppLogs/User_Password.xml");
+            File dirs_ = new File(file.getPath());
+            if (dirs_.exists()) {
+                FileInputStream fileIS = null;
+                try {
+                    fileIS = new FileInputStream(dirs_.getPath());
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                StringBuffer sb = new StringBuffer();
+                BufferedReader buf = new BufferedReader(new InputStreamReader(fileIS));
+                String readString = new String();
+                while (true) {
+                    try {
+                        if (!((readString = buf.readLine()) != null)) break;
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    sb.append(readString);
+                }
+                String GetXmlValues = sb.toString();
+                JSONObject jsonObject = null;
+                jsonObject = JSON.parseObject(GetXmlValues);
+                //
+                String GetIsspeed = jsonObject.getString("Password");
+                String GetPassword = jsonObject.toJSONString(GetIsspeed).replace("\"", "");
+                Password = GetPassword;
+            } else {
+
+            }
+        } catch (Exception exception) {
+
+        }
+    }
+
+
     // 读取Xml 获取数据
     private void without_code() throws FileNotFoundException {
         try {
@@ -727,14 +856,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void TestStrCut(){
-        String OUD = "OM_FDSF";
-        String ddd = OUD.toLowerCase();
-        String Index  ="uploads/ai_bird/20211102/fb259708-9b1c-4efe-b660-7cc5b186aec2.jpg,uploads/ai_bird/20211102/7698ee24-d347-48bc-a4f0-73bc1984b1c0.jpg,uploads/ai_bird/20211102/a6a95c2d-2a00-4c8c-8602-0eb0d56466a5.jpg";
-        String index1 = Index.substring(0,Index.indexOf(","));
-        String Index2 = Index.replace("uploads/ai_bird/20211102/fb259708-9b1c-4efe-b660-7cc5b186aec2.jpg"+",","");
-        String Index3 = Index2.substring(0,Index2.indexOf(","));
-        String sss ="";
+
+    public void OpenStart(int value) {
+        if (mSerial.isConnected()) {
+            mSerial.write(SetDat.unlocking(value));
+        } else {
+            Toast.makeText(MainActivity.this, "串口没有正常连接", Toast.LENGTH_SHORT).show();
+        }
+
     }
+
 
 }

@@ -11,7 +11,9 @@
         <entry key="..\:/Manipulator_control/app/src/main/res/drawable/login_bt_red.xml" value="0.22083333333333333" />
         <entry key="..\:/Manipulator_control/app/src/main/res/drawable/yj_1.xml" value="0.22083333333333333" />
         <entry key="..\:/Manipulator_control/app/src/main/res/layout/activity_control.xml" value="0.2957427536231884" />
-        <entry key="..\:/Manipulator_control/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Manipulator_control/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Manipulator_control/app/src/main/res/layout/activity_update.xml" value="0.19166666666666668" />
+        <entry key="..\:/Manipulator_control/app/src/main/res/layout/fragment_password_fg.xml" value="0.18" />
       </map>
     </option>
   </component>

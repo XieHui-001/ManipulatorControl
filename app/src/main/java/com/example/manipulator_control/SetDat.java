@@ -88,8 +88,9 @@ public class SetDat {
         return ReturnValue;
     }
 
-    public static byte[] turn_on(int value){
-        byte Function = (byte) 0xf3;
+    // Power
+    public static byte[] turn_on(int value) {
+        byte Function = (byte) 0x31;
         byte target_device = 0X05;
         byte FH = (byte) 0xAA;
         byte transmitting_apparatus = (byte) 0XAF;
@@ -101,6 +102,41 @@ public class SetDat {
         byte Values = (byte) SumData;
         byte[] ReturnValue = {FH, transmitting_apparatus, target_device, Function, a, b, Values};
         Logs.e("数据：turn_on", FH + "   " + transmitting_apparatus + "   " + target_device + "   " + Function + "   " + b + "   " + a + "   " + Values);
+        return ReturnValue;
+    }
+
+    // 急停
+    public static byte[] StopAll(int value) {
+        byte Function = (byte) 0x30;
+        byte target_device = 0X05;
+        byte FH = (byte) 0xAA;
+        byte transmitting_apparatus = (byte) 0XAF;
+        short data = (short) value;
+        byte b = (byte) (data & 0xff);//低八位
+        byte a = (byte) ((data & 0xff00) >> 8);
+
+        int SumData = (int) FH + transmitting_apparatus + target_device + Function + b + a;
+        byte Values = (byte) SumData;
+        byte[] ReturnValue = {FH, transmitting_apparatus, target_device, Function, a, b, Values};
+        Logs.e("数据：StopAll", FH + "   " + transmitting_apparatus + "   " + target_device + "   " + Function + "   " + b + "   " + a + "   " + Values);
+        return ReturnValue;
+    }
+
+
+    // 开锁解锁急停
+    public static byte[] unlocking(int value) {
+        byte Function = (byte) 0xFF;
+        byte target_device = 0X05;
+        byte FH = (byte) 0xAA;
+        byte transmitting_apparatus = (byte) 0XAF;
+        short data = (short) value;
+        byte b = (byte) (data & 0xff);//低八位
+        byte a = (byte) ((data & 0xff00) >> 8);
+
+        int SumData = (int) FH + transmitting_apparatus + target_device + Function + b + a;
+        byte Values = (byte) SumData;
+        byte[] ReturnValue = {FH, transmitting_apparatus, target_device, Function, a, b, Values};
+        Logs.e("数据：unlocking", FH + "   " + transmitting_apparatus + "   " + target_device + "   " + Function + "   " + b + "   " + a + "   " + Values);
         return ReturnValue;
     }
 
